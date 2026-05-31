@@ -8,6 +8,11 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0'
+      - name: Download SHVDN
+        run: |
+          curl -L -o shvdn.zip https://github.com/crosire/scripthookvdotnet/releases/download/v3.6.0/ScriptHookVDotNet-3.6.0.zip
+          tar -xf shvdn.zip
+          copy ScriptHookVDotNet2.dll Dismemberment\SHVDN\
       - run: dotnet build Dismemberment.sln -c Release
       - uses: actions/upload-artifact@v4
         with:
