@@ -9,7 +9,7 @@ jobs:
         with:
           dotnet-version: '4.8'
       - run: dotnet build Dismemberment.sln -c Release
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: Dismemberment
           path: '**/bin/Release/**/*.dll'
