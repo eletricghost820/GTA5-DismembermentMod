@@ -11,7 +11,7 @@ jobs:
       - name: Download SHVDN
         shell: powershell
         run: |
-          Invoke-WebRequest -Uri "https://github.com/scripthookvdotnet/scripthookvdotnet/releases/download/v3.6.0/ScriptHookVDotNet-3.6.0.zip" -OutFile shvdn.zip
+          Invoke-WebRequest -Uri "https://github.com/scripthookvdotnet/scripthookvdotnet/releases/download/v3.6.0/ScriptHookVDotNet.zip" -OutFile shvdn.zip -UseBasicParsing
           Expand-Archive -Path shvdn.zip -DestinationPath shvdn -Force
           New-Item -ItemType Directory -Force -Path Dismemberment\SHVDN
           Copy-Item shvdn\ScriptHookVDotNet2.dll Dismemberment\SHVDN\
