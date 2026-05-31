@@ -9,11 +9,14 @@ jobs:
         with:
           dotnet-version: '8.0'
       - name: Download SHVDN
+        shell: powershell
         run: |
           curl -L -o shvdn.zip https://github.com/crosire/scripthookvdotnet/releases/download/v3.6.0/ScriptHookVDotNet-3.6.0.zip
-          tar -xf shvdn.zip
-          copy ScriptHookVDotNet2.dll Dismemberment\SHVDN\
-      - run: dotnet build Dismemberment.sln -c Release
+          Expand-Archive -Path shvdn.zip -DestinationPath shvdn -Force
+          New-Item -ItemType Directory -Force -Path Dismemberment\SHVDN
+          Copy-Item shvdn\ScriptHookVDotNet2.dll Dismemberment\SHVDN\
+      - name: Build
+        run: dotnet build Dismemberment.sln -c Release
       - uses: actions/upload-artifact@v4
         with:
           name: Dismemberment
